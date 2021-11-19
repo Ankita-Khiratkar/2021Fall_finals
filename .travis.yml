@@ -1,0 +1,10 @@
+# Travis CI configuration file
+language: python
+
+matrix:
+  include:
+    - python: 3.8
+    - python: 3.9
+
+# Run doctests
+script: pytest --doctest-modules
