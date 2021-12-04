@@ -8,8 +8,8 @@ import numpy as np
 
 def import_bls_excel(directory: str, file_name: str) -> pd.DataFrame:
     """
-    The function reads data from given directory path and excel file name and converts it into a pandas Dataframe having
-    index as Year and Month. This function gets called from the get_bls_data_merged function.
+    The function reads data from given directory path and excel file name and converts it into a pandas Dataframe in the
+    required format having Year and Month an index. This function gets called from the get_bls_data_merged function.
     :param directory: location of directory in which files are stored
     :param file_name: name of the file to read
     :return: dataframe of the requested excel sheet with index as Year and Month
@@ -36,13 +36,19 @@ def import_bls_excel(directory: str, file_name: str) -> pd.DataFrame:
     ...
     FileNotFoundError: [Errno 2] No such file or directory: './Data/BLS/Age/16-19 yrs'
     """
+    # Loading the dataset from the specified directory path
     df = pd.read_excel(directory+file_name, dtype={'Year': 'Int16'}, skiprows=12)
     column = file_name.replace('.xlsx', '')
+    # Creating a blank Data Frame with the required columns
     df_new = pd.DataFrame(columns=['Year', 'Month', column])
+    # Extracting the column name from the existing data data frame
     colnames = list(df.columns)
     colnames.remove('Year')
+    # Iterating through each row in the existing data frame
     for index in df.index:
         row = df.loc[index]
+        # Iterating through each column value in the existing data frame
+        # Adding them to the new data frame row wise
         for col in colnames:
             df_new.loc[len(df_new.index)] = [row['Year'], col, row[col]]
     return df_new.set_index(['Year', 'Month'])
@@ -50,10 +56,10 @@ def import_bls_excel(directory: str, file_name: str) -> pd.DataFrame:
 
 def get_bls_data_merged(dir_path: str, df_merge: pd.DataFrame) -> pd.DataFrame:
     """
-    This function merges all the data from different files of the time period specified into one dataframe
-    :param dir_path: path of the directory folder where excel sheets are stored
-    :param df_merge: pandas dataframe which has the merged data from all the excel files
-    :return: dataframe containing the merged data of all the data files having index as Year and Month
+    This function merges the data from all the files in the given directory into one dataframe
+    :param dir_path: path of the directory where the excel sheets are stored
+    :param df_merge: base pandas dataframe to which all the files in the given directory are to be merged
+    :return: dataframe containing the merged data from all the data files having index as Year and Month
 
     >>> get_bls_data_merged('./Data/BLS/Age/', get_bls_dummy([2020, 2021]))   # doctest: +NORMALIZE_WHITESPACE
                 16-19 yrs  20 yrs. & over, Men  20 yrs. & over, Women
@@ -94,19 +100,23 @@ def get_bls_data_merged(dir_path: str, df_merge: pd.DataFrame) -> pd.DataFrame:
     ...
     FileNotFoundError: [WinError 3] The system cannot find the path specified: './Data/BLS/Ages'
     """
+
+    # Iterating through all the files present in the specified directory
     for name in os.listdir(dir_path):
+        # Transforming each of the file to the required format
         new_df = import_bls_excel(directory=dir_path, file_name=name)
+        # Merging all the files to a single data frame
         df_merge = pd.merge(df_merge, new_df, left_index=True, right_index=True, how='left')
     return df_merge
 
 
 def get_bls_dummy(date_range: list) -> pd.DataFrame:
     """
-    This function creates an empty dataframe which serves as the base to merge all the data from files into one Dataframe.
-    Some files do not have values for all the months. So the dataframe output of this function serves as a base for
-    merging all the files into one.
+    This function creates an empty dataframe which serves as the base to merge the data from all the files into one
+    Dataframe. Some files do not have values for all the months. So the dataframe output from this function serves as a
+    base for merging all the files into one.
     :param date_range: list containing start and end year
-    :return: dataframe containing no columns and index as Year and Month
+    :return: Empty dataframe with index as Year and Month
 
     >>> get_bls_dummy([2020, 2021])
     Empty DataFrame
@@ -130,9 +140,12 @@ def get_bls_dummy(date_range: list) -> pd.DataFrame:
     """
     months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     df_def = []
-    for i in range(date_range[0], date_range[1]):
+    # Iterating through each year between the given start and end year
+    for i in range(date_range[0], date_range[1]+1):
+        # Pairing each year with all the months
         for m in months:
             df_def.append([i, m])
+    # Creating a new dataframe and setting Year and month as the index
     df_def = pd.DataFrame(data=df_def, columns=['Year', 'Month'])
     df_def.set_index(['Year', 'Month'], inplace=True)
     return df_def
@@ -140,9 +153,10 @@ def get_bls_dummy(date_range: list) -> pd.DataFrame:
 
 def process_unemployment_underemployed(sheet_name: str) -> pd.DataFrame:
     """
-    This function reads the specified sheet names from the excel sheet and returns a dataframe with Date as index
+    This function reads the specified sheet from the specified excel file and returns a dataframe with Date
+    as the index
     :param sheet_name: name of the required sheet in the input excel file
-    :return: dataframe containing data of the excel file with Date as index and required columns
+    :return: dataframe containing the required columns  Date as the index
 
     >>> process_unemployment_underemployed('ch1_unemployment')    # doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
                 Recent graduates  College graduates
@@ -166,6 +180,7 @@ def process_unemployment_underemployed(sheet_name: str) -> pd.DataFrame:
     ...
     ValueError: Worksheet named 'ch1_unemployed' not found
     """
+    # Reading the specified sheet from the specified excel file
     df_unemp_underemp = pd.read_excel('./Data/unemployed_vs_underemployed/labor-market-for-recent-college-grads.xlsx',
                                   sheet_name=sheet_name,
                                   usecols=['Date', 'Recent graduates', 'College graduates'], skiprows=13, skipfooter=2)
@@ -175,11 +190,11 @@ def process_unemployment_underemployed(sheet_name: str) -> pd.DataFrame:
 
 def get_job_loss_gain_df(path: str) -> pd.DataFrame:
     """
-    This function reads the data from the csv file with State as index and calculates the percentage change in
-    job losses/gains on the quarterly basis.
+    This function reads the data from the specified csv file and calculates the percentage change in job losses/gains
+    on the quarterly basis for all the states.
     :param path: path of the csv file from which data is to be read
-    :return: dataframe containing data read from the csv file with State as index and columns containing calculated
-    percentage changes
+    :return: dataframe containing data read from the csv file with State as index and columns containing the calculated
+    percentage changes in job losses/gains
 
     >>> get_job_loss_gain_df(path='./Data/BLS state job gains and losses/Gross_job_losses.csv')    # doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
                           Mar 2019  Mar 2020  ...  % Change Q1 19-20  % Change Q1 20-21
@@ -197,17 +212,21 @@ def get_job_loss_gain_df(path: str) -> pd.DataFrame:
     ...
     FileNotFoundError: [Errno 2] No such file or directory: './Data/BLS state job gains and losses/Gross_job.csv'
     """
-    df_job_loss = pd.read_csv(path, index_col='State', usecols=['State', 'Mar 2019', 'Mar 2020', 'Mar 2021'])
-    for col in df_job_loss.columns:
-        df_job_loss[col] = df_job_loss[col].str.replace(',', '').astype(int)
-    df_job_loss['% Change Q1 19-20'] = ((df_job_loss['Mar 2020'] - df_job_loss['Mar 2019'])/df_job_loss['Mar 2019']) * 100
-    df_job_loss['% Change Q1 20-21'] = ((df_job_loss['Mar 2021'] - df_job_loss['Mar 2020'])/df_job_loss['Mar 2020']) * 100
-    return df_job_loss
+    # Reading the csv file to a dataframe
+    df_jobs = pd.read_csv(path, index_col='State', usecols=['State', 'Mar 2019', 'Mar 2020', 'Mar 2021'])
+    # Iterating through each column in the data frame
+    for col in df_jobs.columns:
+        # Removing the commas from the number and changing their data type to int
+        df_jobs[col] = df_jobs[col].str.replace(',', '').astype(int)
+    # Calculating the percentage change in job losses/gains
+    df_jobs['% Change Q1 19-20'] = ((df_jobs['Mar 2020'] - df_jobs['Mar 2019'])/df_jobs['Mar 2019']) * 100
+    df_jobs['% Change Q1 20-21'] = ((df_jobs['Mar 2021'] - df_jobs['Mar 2020'])/df_jobs['Mar 2020']) * 100
+    return df_jobs
 
 
 def get_gdp_unemployment_df(path_gdp: str, path_unemp: str) -> pd.DataFrame:
     """
-    This functions reads and merges data sets for GDP and Unemployment data and returns a dataframe having Year as index
+    This functions reads and merges data sets for GDP and Unemployment and returns a dataframe with Year as the index
     :param path_gdp: path of the excel file to be read for GDP data
     :param path_unemp: path of the csv file to be read for unemployment data
     :return: dataframe containing merged data sets of GDP and unemployment with Year as index and all the required columns
@@ -226,14 +245,21 @@ def get_gdp_unemployment_df(path_gdp: str, path_unemp: str) -> pd.DataFrame:
     ...
     FileNotFoundError: [Errno 2] No such file or directory: './Data/GDP and Unemployment/Unemployed.csv'
     """
+    # Reading the GDP data from the given path
     df_gdp = pd.read_excel(path_gdp, skiprows=3, index_col='Country Name')
+    # Extracting the rows for United States and transposing the dataframe
     df_gdp = df_gdp[df_gdp.index == 'United States'].transpose().iloc[3:]
     df_gdp.index.names = ['Year']
+    # Setting the columns name of the dataframe
     df_gdp.columns = ['GDP(Trillion $)']
+    # Changing the unit of the GDP to trillion dollars
     df_gdp['GDP(Trillion $)'] = df_gdp['GDP(Trillion $)'] / (10 ** 12)
 
+    # Reading the unemployment data from the given path
     df_unemployment = pd.read_csv(path_unemp)
+    # Transposing the dataframe
     df_unemployment = df_unemployment.transpose().iloc[2:, :6]
+    # Setting the columns name of the dataframe
     df_unemployment.columns = df_unemployment.iloc[0]
     df_unemployment = df_unemployment.iloc[3:, ]
     df_unemployment.columns = ['% Unemployed Female',
@@ -242,9 +268,12 @@ def get_gdp_unemployment_df(path_gdp: str, path_unemp: str) -> pd.DataFrame:
                                '% Unemployed Female Youth (Ages 15-24)',
                                '% Unemployed Male Youth (Ages 15-24)',
                                '% Unemployed Total Youth (Ages 15-24)']
+    # Setting the index of the dataframe
     df_unemployment.index.names = ['Year']
+    # Changing the index values to the required format
     df_unemployment.index = df_unemployment.index.str.split('[').str[0].str.strip()
 
+    # Merging the GDP and the unemployment data
     df_merge = pd.merge(df_gdp,
                         df_unemployment,
                         left_index=True,
@@ -255,9 +284,9 @@ def get_gdp_unemployment_df(path_gdp: str, path_unemp: str) -> pd.DataFrame:
 
 def get_party_colour(party_list: list) -> list:
     """
-    This function returns a list of the color according to the political party
-    :param party_list: list of the parties in the data set
-    :return: a list containing color for the respective political party at the given index
+    This function returns a list of the color corresponding to the input political party list
+    :param party_list: list of the political parties in the data set
+    :return: a list of colours corresponding to the input political party list
 
     >>> df_umemp = import_bls_excel(directory='./Data/BLS/Unemployment/', file_name='Unemployment Rate.xlsx')
     >>> df_umemp = df_umemp.groupby('Year')['Unemployment Rate'].mean().round(2)
@@ -270,7 +299,9 @@ def get_party_colour(party_list: list) -> list:
     ['Green', 'Green', 'Green', ... 'Blue', 'Blue', 'Blue', 'Blue']
     """
     colour_list = []
+    # Iterating through the all the input political parties list
     for party in party_list:
+        # Assigning colours according to the political party
         if party == 'Republican':
             colour_list.append('Blue')
         elif party == 'Democrat':
@@ -282,10 +313,11 @@ def get_party_colour(party_list: list) -> list:
 
 def get_state_region_pop_df(path_1: str, path_2: str) -> pd.DataFrame:
     """
-    This function reads the specified files and merges them into one dataframe with State as index
+    This function reads the data files for state population and regions and merges them into one dataframe with State
+    as index
     :param path_1: path of the population file to be read
     :param path_2: path of the region file to be read
-    :return: dataframe having merged data of the files with State as index
+    :return: dataframe having merged data of the population and region files with State as index
 
     >>> get_state_region_pop_df('./Data/State Population/statewise population.csv', './Data/State Population/state_region_division.csv')    # doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
                                   2010      2011  ...     Region            Division
@@ -303,29 +335,32 @@ def get_state_region_pop_df(path_1: str, path_2: str) -> pd.DataFrame:
     ...
     FileNotFoundError: [Errno 2] No such file or directory: './Data/State Population/statewise populate.csv'
     """
+    # Reading the state population data
     df_state_pop = pd.read_csv(path_1,
                               usecols=['NAME', 'POPESTIMATE2010', 'POPESTIMATE2011',
                                        'POPESTIMATE2012', 'POPESTIMATE2013', 'POPESTIMATE2014',
                                        'POPESTIMATE2015', 'POPESTIMATE2016', 'POPESTIMATE2017',
                                        'POPESTIMATE2018', 'POPESTIMATE2019', 'POPESTIMATE2020'])
     df_state_pop.columns = ['State', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020']
-    df_region_pop = df_state_pop.loc[:4]
+    # df_region_pop = df_state_pop.loc[:4]
     df_state_pop = df_state_pop.loc[5:]
     df_state_pop.set_index('State', inplace=True)
 
+    # Reading the State region data
     df_state_reg = pd.read_csv(path_2,
                               index_col='State',
                               usecols=['State', 'Region', 'Division'])
 
+    # Return the merged state unemployment and region dataframe
     return pd.merge(df_state_pop, df_state_reg, left_index=True, right_index=True, how='right')
 
 
 def invert_state_df(df: pd.DataFrame) -> pd.DataFrame:
     """
-    The input dataframe contains a seperate column for population for each year, this function transforms population
-    for all the years into a single column
+    The input dataframe contains a seperate column for population for each year, this function create a new dataframe
+    containing population for all the years into a single column
     :param df: dataframe containing State, Region, Division, and population for all the years
-    :return: dataframe having population column based on year
+    :return: dataframe containing population for all the years into a single column
 
     >>> df_state_region = get_state_region_pop_df('./Data/State Population/statewise population.csv', './Data/State Population/state_region_division.csv')
     >>> invert_state_df(df_state_region)    # doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
@@ -338,10 +373,14 @@ def invert_state_df(df: pd.DataFrame) -> pd.DataFrame:
     <BLANKLINE>
     [561 rows x 5 columns]
     """
+    # Creating a new dataframe with columns as per the requirements
     df_state_inv = pd.DataFrame(columns=['State', 'Region', 'Division', 'Year', 'Population'])
+    # Iterating through all the rows in the input dataframe
     for i in df.index:
         current_row = df.loc[i]
+        # Iterating through all the required years
         for y in ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020']:
+            # Adding the state population data to the new dataframe row wise
             df_state_inv.loc[len(df_state_inv.index)] = [i, current_row['Region'], current_row['Division'], y, current_row[y]]
     df_state_inv = df_state_inv.astype({"Year": int, "Population": int})
     return df_state_inv
@@ -359,6 +398,7 @@ def correct_rate_values(x: str) -> float:
     >>> correct_rate_values('-')
     nan
     """
+    # Checking if the input value is of float data type
     if not isinstance(x, float):
         x = x.strip()
         if x == '-':
@@ -372,7 +412,7 @@ def get_state_umemp_df(path: str) -> pd.DataFrame:  # Can be made faster using N
     """
     The input data set has unemployment rate of all months for all years as sepearte columns for every state.
     This function reads the data from the specified csv file and transforms the unemployment rate into a single column
-    :param path: path of the csv file to be read
+    :param path: path of the csv file containing the state unemployment data
     :return: dataframe containing statewise unemployment data
 
     >>> get_state_umemp_df(path='./Data/Unemployment Rates for States/state_unemployment_11_21.csv')    # doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
@@ -391,15 +431,20 @@ def get_state_umemp_df(path: str) -> pd.DataFrame:  # Can be made faster using N
     FileNotFoundError: [Errno 2] No such file or directory: './Data/Unemployment Rates for States/state_unemployment_11.csv'
     """
     df_state_emp = pd.read_csv(path, index_col='State')
-
+    # Creating a new dataframe with columns as per requirements
     df_state_emp_inv = pd.DataFrame(columns=['State', 'Date', 'Rate'])
+    # Iterating through each row in the input dataframe
     for i in df_state_emp.index:
         current_row = df_state_emp.loc[i]
+        # Iterating through each column in the input dataframe
         for d in list(df_state_emp.columns):
+            # Adding the state unemployment data to the new dataframe row wise
             df_state_emp_inv.loc[len(df_state_emp_inv.index)] = [i, d, current_row[d]]
 
+    # Extracting the Year from the Date column
     df_state_emp_inv['Date'] = pd.to_datetime(df_state_emp_inv['Date'])
     df_state_emp_inv['Year'] = df_state_emp_inv['Date'].dt.year
+    # Correcting the unemployment rate values
     df_state_emp_inv['Rate'] = df_state_emp_inv['Rate'].apply(correct_rate_values)
     df_state_emp_inv.dropna(inplace=True)
 
