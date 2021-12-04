@@ -76,6 +76,18 @@ def get_bls_data_merged(dir_path: str, df_merge: pd.DataFrame) -> pd.DataFrame:
          Oct         14.0                  6.7                    6.5
          Nov         13.9                  6.6                    6.2
          Dec         16.0                  6.4                    6.3
+    2021 Jan         14.8                  6.0                    6.0
+         Feb         13.9                  6.0                    5.9
+         Mar         13.0                  5.8                    5.7
+         Apr         12.3                  6.1                    5.6
+         May          9.6                  5.9                    5.4
+         Jun          9.9                  5.9                    5.5
+         Jul          9.6                  5.4                    5.0
+         Aug         11.2                  5.1                    4.8
+         Sep         11.5                  4.7                    4.2
+         Oct         11.9                  4.3                    4.4
+         Nov          NaN                  NaN                    NaN
+         Dec          NaN                  NaN                    NaN
 
     >>> get_bls_data_merged('./Data/BLS/Ethnicity/', get_bls_dummy([1980, 2020])) # doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
                 Asian  Black or African American  Hispanic or Latino  White
@@ -86,13 +98,13 @@ def get_bls_data_merged(dir_path: str, df_merge: pd.DataFrame) -> pd.DataFrame:
          Apr      NaN                       13.8                10.4    6.1
          May      NaN                       14.4                10.1    6.6
     ...           ...                        ...                 ...    ...
-    2019 Aug      2.8                        5.2                 4.2    3.4
-         Sep      2.5                        5.4                 4.0    3.2
-         Oct      2.9                        5.6                 4.2    3.3
-         Nov      2.6                        5.7                 4.3    3.3
-         Dec      2.6                        6.2                 4.3    3.1
+    2020 Aug     10.6                       12.8                10.5    7.4
+         Sep      8.8                       12.0                10.3    7.0
+         Oct      7.6                       10.8                 8.8    6.0
+         Nov      6.7                       10.3                 8.4    5.9
+         Dec      5.9                        9.9                 9.3    6.0
     <BLANKLINE>
-    [480 rows x 4 columns]
+    [492 rows x 4 columns]
 
 
     >>> get_bls_data_merged('./Data/BLS/Ages', get_bls_dummy([2019, 2020])) # doctest: +ELLIPSIS
@@ -121,14 +133,9 @@ def get_bls_dummy(date_range: list) -> pd.DataFrame:
     >>> get_bls_dummy([2020, 2021])
     Empty DataFrame
     Columns: []
-    Index: [(2020, Jan), (2020, Feb), (2020, Mar), (2020, Apr), (2020, May), (2020, Jun), (2020, Jul), (2020, Aug), (2020, Sep), (2020, Oct), (2020, Nov), (2020, Dec)]
+    Index: [(2020, Jan), (2020, Feb), (2020, Mar), (2020, Apr), (2020, May), (2020, Jun), (2020, Jul), (2020, Aug), (2020, Sep), (2020, Oct), (2020, Nov), (2020, Dec), (2021, Jan), (2021, Feb), (2021, Mar), (2021, Apr), (2021, May), (2021, Jun), (2021, Jul), (2021, Aug), (2021, Sep), (2021, Oct), (2021, Nov), (2021, Dec)]
 
     >>> get_bls_dummy([2021, 2021])
-    Empty DataFrame
-    Columns: []
-    Index: []
-
-    >>> get_bls_dummy([2021, 2022])
     Empty DataFrame
     Columns: []
     Index: [(2021, Jan), (2021, Feb), (2021, Mar), (2021, Apr), (2021, May), (2021, Jun), (2021, Jul), (2021, Aug), (2021, Sep), (2021, Oct), (2021, Nov), (2021, Dec)]
@@ -288,7 +295,7 @@ def get_party_colour(party_list: list) -> list:
     :param party_list: list of the political parties in the data set
     :return: a list of colours corresponding to the input political party list
 
-    >>> df_umemp = import_bls_excel(directory='./Data/BLS/Unemployment/', file_name='Unemployment Rate.xlsx')
+    >>> df_umemp = import_bls_excel(directory='./Data/Political Party and Unemployment/', file_name='Unemployment Rate.xlsx')
     >>> df_umemp = df_umemp.groupby('Year')['Unemployment Rate'].mean().round(2)
 
     >>> df_president = pd.read_csv('./Data/Political Party and Unemployment/US presidents.csv', dtype={'Years (after inauguration)':'Int16'}, names=['Year', 'President', 'Party'], index_col='Year', skiprows=1)
