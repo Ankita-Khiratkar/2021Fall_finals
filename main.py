@@ -16,19 +16,19 @@ def import_bls_excel(directory: str, file_name: str) -> pd.DataFrame:
     :param file_name: name of the file to read
     :return: dataframe of the requested excel sheet with index as Year and Month
 
-    >>> import_bls_excel('./Data/BLS/Age/', '16-19 yrs.xlsx')   # doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-                      16-19 yrs
+    >>> import_bls_excel('./Data/BLS/Age/', '16-24 yrs.xlsx')   # doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
+                  16-24 yrs
     Year   Month
-    1948.0 Jan          8.5
-           Feb         10.0
-           Mar         10.5
-           Apr          9.5
-           May          7.0
+    1948.0 Jan        872.0
+           Feb       1049.0
+           Mar       1065.0
+           Apr        857.0
+           May        739.0
     ...                 ...
-    2021.0 Aug         11.2
-           Sep         11.5
-           Oct         11.9
-           Nov          NaN
+    2021.0 Aug       2042.0
+           Sep       1772.0
+           Oct       1652.0
+           Nov       1584.0
            Dec          NaN
     <BLANKLINE>
     [888 rows x 1 columns]
@@ -64,34 +64,36 @@ def get_bls_data_merged(dir_path: str, df_merge: pd.DataFrame) -> pd.DataFrame:
     :return: dataframe containing the merged data from all the data files having index as Year and Month
 
     >>> get_bls_data_merged('./Data/BLS/Age/', get_bls_dummy([2020, 2021]))   # doctest: +NORMALIZE_WHITESPACE
-                16-19 yrs  20 yrs. & over, Men  20 yrs. & over, Women
-    Year Month
-    2020 Jan         12.6                  3.1                    3.2
-         Feb         11.5                  3.2                    3.1
-         Mar         14.1                  4.1                    4.0
-         Apr         32.1                 13.1                   15.5
-         May         29.6                 11.6                   13.9
-         Jun         22.6                 10.2                   11.3
-         Jul         19.1                  9.4                   10.4
-         Aug         16.4                  8.0                    8.3
-         Sep         16.3                  7.3                    7.7
-         Oct         14.0                  6.7                    6.5
-         Nov         13.9                  6.6                    6.2
-         Dec         16.0                  6.4                    6.3
-    2021 Jan         14.8                  6.0                    6.0
-         Feb         13.9                  6.0                    5.9
-         Mar         13.0                  5.8                    5.7
-         Apr         12.3                  6.1                    5.6
-         May          9.6                  5.9                    5.4
-         Jun          9.9                  5.9                    5.5
-         Jul          9.6                  5.4                    5.0
-         Aug         11.2                  5.1                    4.8
-         Sep         11.5                  4.7                    4.2
-         Oct         11.9                  4.3                    4.4
-         Nov          NaN                  NaN                    NaN
-         Dec          NaN                  NaN                    NaN
+                16-24 yrs  25-34 yrs  ...  55-64 yrs  65 yrs. & over
+    Year Month                        ...
+    2020 Jan       1868.0     1577.0  ...      779.0           321.0
+         Feb       1655.0     1520.0  ...      732.0           361.0
+         Mar       2007.0     1650.0  ...      951.0           394.0
+         Apr       4817.0     5096.0  ...     3382.0          1609.0
+         May       4870.0     4740.0  ...     2953.0          1328.0
+         Jun       4517.0     4231.0  ...     2508.0          1111.0
+         Jul       3973.0     4148.0  ...     2419.0           994.0
+         Aug       2945.0     3557.0  ...     2068.0           900.0
+         Sep       2695.0     3060.0  ...     1738.0           747.0
+         Oct       2306.0     2619.0  ...     1424.0           553.0
+         Nov       2190.0     2421.0  ...     1553.0           594.0
+         Dec       2336.0     2338.0  ...     1565.0           626.0
+    2021 Jan       2404.0     2620.0  ...     1507.0           564.0
+         Feb       2237.0     2453.0  ...     1569.0           526.0
+         Mar       2214.0     2554.0  ...     1258.0           527.0
+         Apr       2033.0     2279.0  ...     1324.0           495.0
+         May       2062.0     2008.0  ...     1184.0           537.0
+         Jun       2419.0     2367.0  ...     1255.0           598.0
+         Jul       2254.0     2307.0  ...     1185.0           543.0
+         Aug       2042.0     2133.0  ...     1032.0           496.0
+         Sep       1772.0     1832.0  ...      917.0           351.0
+         Oct       1652.0     1661.0  ...      849.0           392.0
+         Nov       1584.0     1407.0  ...      820.0           350.0
+         Dec          NaN        NaN  ...        NaN             NaN
+    <BLANKLINE>
+    [24 rows x 6 columns]
 
-    >>> get_bls_data_merged('./Data/BLS/Ethnicity/', get_bls_dummy([1980, 2020])) # doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
+    >>> get_bls_data_merged('./Data/BLS/Race/', get_bls_dummy([1980, 2020])) # doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
                 Asian  Black or African American  Hispanic or Latino  White
     Year Month
     1980 Jan      NaN                       13.0                 8.7    5.5
@@ -417,14 +419,14 @@ def correct_rate_values(x: str) -> float:
     return x
 
 
-def get_state_umemp_df(path: str) -> pd.DataFrame:  # Can be made faster using Numba
+def get_state_unemp_df(path: str) -> pd.DataFrame:  # Can be made faster using Numba
     """
     The input data set has unemployment rate of all months for all years as sepearte columns for every state.
     This function reads the data from the specified csv file and transforms the unemployment rate into a single column
     :param path: path of the csv file containing the state unemployment data
     :return: dataframe containing statewise unemployment data
 
-    >>> get_state_umemp_df(path='./Data/Unemployment Rates for States/state_unemployment_11_21.csv')    # doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
+    >>> get_state_unemp_df(path='./Data/Unemployment Rates for States/state_unemployment_11_21.csv')    # doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
                     State       Date  Rate  Year
     0         Alabama 2011-10-01   9.2  2011
     1         Alabama 2011-11-01   8.9  2011
@@ -434,7 +436,7 @@ def get_state_umemp_df(path: str) -> pd.DataFrame:  # Can be made faster using N
     <BLANKLINE>
     [6290 rows x 4 columns]
 
-    >>> get_state_umemp_df(path='./Data/Unemployment Rates for States/state_unemployment_11.csv')    # doctest: +ELLIPSIS
+    >>> get_state_unemp_df(path='./Data/Unemployment Rates for States/state_unemployment_11.csv')    # doctest: +ELLIPSIS
     Traceback (most recent call last):
     ...
     FileNotFoundError: [Errno 2] No such file or directory: './Data/Unemployment Rates for States/state_unemployment_11.csv'
