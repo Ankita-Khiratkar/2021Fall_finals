@@ -2,7 +2,6 @@
 
 Authors: Ankita Khiratkar (aak13), Divyaang Agarwal (dagarw5)
 
-<hr>
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -17,7 +16,7 @@ Authors: Ankita Khiratkar (aak13), Divyaang Agarwal (dagarw5)
       </ul>
     </li>
     <li>
-      <a href="#hypotheses">Hypotheses</a>
+      <a href="#analysis">Analysis</a>
       <ul>
         <li><a href="#hypothesis-1">Hypothesis 1</a></li>
         <li><a href="#hypothesis-2">Hypothesis 2</a></li>
@@ -33,7 +32,6 @@ Authors: Ankita Khiratkar (aak13), Divyaang Agarwal (dagarw5)
     <li><a href="#data-sources">Data Sources</a></li>
   </ol>
 </details>
-<hr>
 
 ## Description
 
@@ -42,26 +40,70 @@ Authors: Ankita Khiratkar (aak13), Divyaang Agarwal (dagarw5)
 ### Prerequisites
 
 ### Installation
-1. Open the command terminal in the required folder
-2. Clone the repository
-``` git clone https://github.com/Ankita-Khiratkar/2021Fall_finals.git```
-3. Open file Final_Project.ipynb in Jupyter Notebook
+1. Open the command terminal in the required folder and clone the repository using command
+``` 
+git clone https://github.com/Ankita-Khiratkar/2021Fall_finals.git
+```
+OR<br>
+Download the zip folder from the browser using this link
+```
+https://github.com/Ankita-Khiratkar/2021Fall_finals/archive/refs/heads/main.zip
+```
+2. Open and run file Final_Project.ipynb in Jupyter Notebook
 
-## Hypotheses
-All the hypotheses have been stated and tested in the Final_Project.ipynb
+## Analysis
+
 
 ### Hypothesis 1
 >Null Hypothesis: Unemployment rate in the United States is independent of Age
 >
 >Alternative Hypothesis: Unemployment rate in the United States is NOT independent of Age
 
-<img alt="Unemployment Rate in the United States - Age" src="C:\Users\ankit\PR_Final_Project\2021Fall_finals\images\Unemployment Rate in the United States - Age.png" title="Unemployment Rate in the United States - Age"/>
+<img alt="Unemployment Rate in the United States - Age" src="./images/Unemployment Rate in the United States - Age.png" title="Unemployment Rate in the United States - Age"/>
+
+<strong>Observation:</strong><br>
+- From the above plot, we observe that the unemployment rate is inversely proportional to the age group. Higher the age group, lower is the unemployment rate.
+
+- Unemployment rate is highest for the age group 16 to 24 years followed by 25 to 34 years, then 35 to 44 years, then 45 to 54 years, followed by 55 to 64 years, and lastly 65 years and above.
+
+- Therefore, we conclude that unemployment rate is not independent of age and reject the null hypothesis.
 
 ### Hypothesis 2
+>Null Hypothesis: Unemployment rate in the United States is independent of Race
+>
+>Alternative Hypothesis: Unemployment rate in the United States is NOT independent of Race
+
+<img alt="Unemployment Rate in the United States - Race" src="./images/Unemployment Rate in the United States - Race.png" title="Unemployment Rate in the United States - Race"/>
+
+<strong>Observation:</strong><br>
+- Ideally, the umployment rate should be independent of race but from the plot above we infer that the unemployment rate is always highest for Black/Africans Americans and lowest for Asian people. This trend is consistent throughout the timeline- the unemployment rate is highest for Black Americans followed by Hispanic or Latino then White and then Asians.
+
+- Therefore, we can say that unemployemt rate is not independent of race and we reject the null hypothesis.
+
 
 ### Hypothesis 3
+>Null Hypothesis: Unemployment rate in the United States is independent of Education Level
+>
+>Alternative Hypothesis: Unemployment rate in the United States is NOT independent of Education Level
+
+<img alt="Unemployment Rate in the United States - Education Level" src="./images/Unemployment Rate in the United States - Education Level.png" title="Unemployment Rate in the United States - Education Level"/>
+
+<strong>Observation:</strong><br>
+- From the plot above, we infer that the unemployment rate is inversely related to the education level. Unemployment rate is lower for people having the higher level of education.
+
+- The trend of unemployment rate with respect to education level is consistent throughout the timeline- the unemployment rate is highest for people having less than a high school degree or diploma followed by high school graduates (no college) followed by some college or associate degree and lastly, bachelor's degree and higher.
+
+- Thus, we conclude that unemployment rate is dependent on education level and we reject the null hypothesis.
 
 ### Hypothesis 4
+>Null Hypothesis: Duration for which people are unemployed is independent of time
+>
+>Alternative Hypothesis: Duration for which people are unemployed is NOT independent of time
+
+<img alt="Unemployment in the United States - Duration" src="./images/Unemployment in the United States - Duration.png" title="Unemployment in the United States - Duration"/>
+
+<strong>Observation:</strong><br>
+- From the plot above we can clearly see that duartion for which people are unemployed is dependent on time. Thus we reject the null hypothesis.
 
 ### Hypothesis 5
 
