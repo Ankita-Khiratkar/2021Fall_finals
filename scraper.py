@@ -26,11 +26,13 @@ def scrape_table(i: int, path: str):
     >>> if 'job_losses.csv' in os.listdir('./ScraperDoctestFiles/'): print('data scraped successfully')
     data scraped successfully
     """
+    # Calling a get request to the desired url
     response = requests.get(
         'https://www.bls.gov/opub/ted/2021/job-gains-and-losses-by-state-from-march-2019-to-march-2021.htm')
     html_text = response.text
     data = BeautifulSoup(html_text, 'html.parser')
 
+    # Extracting the required data
     tables = data.find_all(class_='article-table')
     table_data = []
 
@@ -40,10 +42,12 @@ def scrape_table(i: int, path: str):
             row_list.append(value)
         table_data.append(row_list)
 
+    # Storing the scraped data to a dataframe
     df = pd.DataFrame(data=table_data[1:],
                       columns=table_data[0])
     df.set_index('State', inplace=True)
     df.dropna(how='all', inplace=True)
+    # Storing the scraped data in a csv file
     df.to_csv(path)
 
 
@@ -57,11 +61,13 @@ def scrape_state_unemp(res_path: str):
     >>> if 'state_unemployment_11_21.csv' in os.listdir('./ScraperDoctestFiles/'): print('data scraped successfully')
     data scraped successfully
     """
+    # Calling a get request to the desired url
     response = requests.get(
         'https://www.bls.gov/charts/state-employment-and-unemployment/state-unemployment-rates-animated.htm')
     html_text = response.text
     data = BeautifulSoup(html_text, 'html.parser')
 
+    # Extracting the required data
     table = data.find(id='lau_rc_unmapanim')
     table_data = []
     for row in table.find_all('tr'):
@@ -69,7 +75,10 @@ def scrape_state_unemp(res_path: str):
         for value in row.stripped_strings:
             row_list.append(value)
         table_data.append(row_list)
+
+    # Storing the scraped data to a dataframe
     df = pd.DataFrame(data=table_data[1:],
                       columns=table_data[0])
     df.set_index('State', inplace=True)
+    # Storing the scraped data in a csv file
     df.to_csv(res_path)
