@@ -1,5 +1,7 @@
-# Analysis of Unemployment Rate in the United States
-# Authors: Divyaang Agarwal, Ankita Khiratkar
+"""
+Analysis of Unemployment Rate in the United States
+Authors: Divyaang Agarwal, Ankita Khiratkar
+"""
 
 import pandas as pd
 import os

@@ -1,3 +1,8 @@
+"""
+Analysis of Unemployment Rate in the United States
+Authors: Divyaang Agarwal, Ankita Khiratkar
+"""
+
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
