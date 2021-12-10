@@ -41,19 +41,14 @@ def import_bls_excel(directory: str, file_name: str) -> pd.DataFrame:
     # Loading the dataset from the specified directory path
     df = pd.read_excel(directory+file_name, dtype={'Year': 'Int16'}, skiprows=12)
     column = file_name.replace('.xlsx', '')
-    # Creating a blank Data Frame with the required columns
-    df_new = pd.DataFrame(columns=['Year', 'Month', column])
+
     # Extracting the column name from the existing data data frame
     colnames = list(df.columns)
     colnames.remove('Year')
-    # Iterating through each row in the existing data frame
-    for index in df.index:
-        row = df.loc[index]
-        # Iterating through each column value in the existing data frame
-        # Adding them to the new data frame row wise
-        for col in colnames:
-            df_new.loc[len(df_new.index)] = [row['Year'], col, row[col]]
-    return df_new.set_index(['Year', 'Month'])
+
+    # Using pandas.melt function to restructure the dataframe to the desired format
+    df = pd.melt(df, id_vars='Year', value_vars=colnames, var_name='Month', value_name=column)
+    return df.set_index(['Year', 'Month'])
 
 
 def get_bls_data_merged(dir_path: str, df_merge: pd.DataFrame) -> pd.DataFrame:
@@ -366,11 +361,11 @@ def get_state_region_pop_df(path_1: str, path_2: str) -> pd.DataFrame:
     return pd.merge(df_state_pop, df_state_reg, left_index=True, right_index=True, how='right')
 
 
-def invert_state_df(df: pd.DataFrame) -> pd.DataFrame:
+def invert_state_df(df_state_pop: pd.DataFrame) -> pd.DataFrame:
     """
     The input dataframe contains a seperate column for population for each year, this function create a new dataframe
     containing population for all the years into a single column
-    :param df: dataframe containing State, Region, Division, and population for all the years
+    :param df_state_pop: dataframe containing State, Region, Division, and population for all the years
     :return: dataframe containing population for all the years into a single column
 
     >>> df_state_region = get_state_region_pop_df('./Data/State Population/statewise population.csv', './Data/State Population/state_region_division.csv')
@@ -384,18 +379,17 @@ def invert_state_df(df: pd.DataFrame) -> pd.DataFrame:
     <BLANKLINE>
     [561 rows x 5 columns]
     """
-    # Creating a new dataframe with columns as per the requirements
-    df_state_inv = pd.DataFrame(columns=['State', 'Region', 'Division', 'Year', 'Population'])
-    # Iterating through all the rows in the input dataframe
-    for i in df.index:
-        current_row = df.loc[i]
-        # Iterating through all the required years
-        for y in ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020']:
-            # Adding the state population data to the new dataframe row wise
-            df_state_inv.loc[len(df_state_inv.index)] = [i, current_row['Region'], current_row['Division'], y, current_row[y]]
-    df_state_inv = df_state_inv.astype({"Year": int, "Population": int})
-    return df_state_inv
 
+    # Resetting the index of the input dataframe
+    df_state_pop.reset_index(inplace=True)
+    # Using pandas.melt function to restructure the dataframe to the desired format
+    df_state_pop = pd.melt(df_state_pop, id_vars=['State', 'Region', 'Division'],
+                           value_vars=['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020'],
+                           var_name='Year',
+                           value_name='Population')
+    # Changing the data type of Year and Population column
+    df_state_pop = df_state_pop.astype({"Year": int, "Population": int})
+    return df_state_pop
 
 def correct_rate_values(x: str) -> float:
     """
@@ -441,22 +435,22 @@ def get_state_unemp_df(path: str) -> pd.DataFrame:  # Can be made faster using N
     ...
     FileNotFoundError: [Errno 2] No such file or directory: './Data/Unemployment Rates for States/state_unemployment_11.csv'
     """
-    df_state_emp = pd.read_csv(path, index_col='State')
-    # Creating a new dataframe with columns as per requirements
-    df_state_emp_inv = pd.DataFrame(columns=['State', 'Date', 'Rate'])
-    # Iterating through each row in the input dataframe
-    for i in df_state_emp.index:
-        current_row = df_state_emp.loc[i]
-        # Iterating through each column in the input dataframe
-        for d in list(df_state_emp.columns):
-            # Adding the state unemployment data to the new dataframe row wise
-            df_state_emp_inv.loc[len(df_state_emp_inv.index)] = [i, d, current_row[d]]
+
+    # Loading the dataset from the specified directory path
+    df_state_unemp = pd.read_csv('./Data/Unemployment Rates for States/state_unemployment_11_21.csv')
+
+    # Extracting the column name from the existing data data frame
+    colnames = list(df_state_unemp.columns)
+    colnames.remove('State')
+
+    # Using pandas.melt function to restructure the dataframe to the desired format
+    df_state_unemp = pd.melt(df_state_unemp, id_vars='State', value_vars=colnames, var_name='Date', value_name='Rate')
 
     # Extracting the Year from the Date column
-    df_state_emp_inv['Date'] = pd.to_datetime(df_state_emp_inv['Date'])
-    df_state_emp_inv['Year'] = df_state_emp_inv['Date'].dt.year
+    df_state_unemp['Date'] = pd.to_datetime(df_state_unemp['Date'])
+    df_state_unemp['Year'] = df_state_unemp['Date'].dt.year
     # Correcting the unemployment rate values
-    df_state_emp_inv['Rate'] = df_state_emp_inv['Rate'].apply(correct_rate_values)
-    df_state_emp_inv.dropna(inplace=True)
+    df_state_unemp['Rate'] = df_state_unemp['Rate'].apply(correct_rate_values)
+    df_state_unemp.dropna(inplace=True)
 
-    return df_state_emp_inv
+    return df_state_unemp
