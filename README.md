@@ -1,23 +1,23 @@
 # Analysis of Unemployment Rate in the United States
 
-Authors: Ankita Khiratkar (aak13), Divyaang Agarwal (dagarw5)
+## Authors: 
+* Ankita Khiratkar (aak13) 
+* Divyaang Agarwal (dagarw5)
 
-<hr />
-<details>
-  <summary>Table of Contents</summary>
+
+## Table of Contents
   <ol>
     <li>
       <a href="#description">Description</a>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
     </li>
     <li>
-      <a href="#analysis">Analysis</a>
+      <a href="#folder-structure">Folder Structure</a>
+    </li>
+    <li>
+      <a href="#analysis">Hypotheses</a>
       <ul>
         <li><a href="#hypothesis-1">Hypothesis 1: Unemployment Rate - Age</a></li>
         <li><a href="#hypothesis-2">Hypothesis 2: Unemployment Rate - Race</a></li>
@@ -30,23 +30,35 @@ Authors: Ankita Khiratkar (aak13), Divyaang Agarwal (dagarw5)
         <li><a href="#hypothesis-9">Hypothesis 9: Relation between Population and the Unemployment Rate</a></li>
       </ul>
     </li>
-    <li><a href="#data-sources">Data Sources</a></li>
+    <li>
+      <a href="#data-sources">Data Sources</a>
+    </li>
+    <li>
+      <a href="#contribution">Contribution</a>
+    </li>
   </ol>
-</details>
 
-<hr />
 
 ## Description
-In the recent times, we have all read news and even experienced the increase in unemployment around the world due to the ongoing Covid-19 pandemic. Our project is based on the analysis of Unemployment Rate over the years in United States. 
+In recent times, we have all read news and even experienced an increase in unemployment around the world due to the ongoing Covid-19 pandemic. Our project is based on the analysis of the Unemployment Rate over the years in the United States. 
 
-Let us familiarize you with what Unemployment Rate means. Unemployment Rate is the fraction of labor force looking for a job. Where labor force is the sum of people who are employed or are looking for a job or work. 
+According to [Wikipedia](https://en.wikipedia.org/wiki/Unemployment_in_the_United_States#U.S._employment_history), the unemployment rate has varied from as low as 1% during World War I to as high as 25% during the Great Depression. It reached notable peaks of 10.8% in November 1982 and 14.7% in April 2020. Unemployment tends to rise during recessions and fall during expansions.
+
+In this project, we aim to find a relation between Unemployment Rates over the years in the United States and factors like 
+* Age 
+* Race 
+* Education Level
+* Duration of Unemployment
+* Underemployment
+* Job losses and job gains
+* Gross Domestic Product (GDP)
+* President's political party
+* Population
+
+Covid-19 has seen one of the highest unemployment rates in the history of the United States. We have tried to analyze the trend between the fall and rise of unemployment during the period of the Great Recession and the ongoing Covid-19 pandemic.
 
 
 ## Getting Started
-
-### Prerequisites
-
-### Installation
 1. Open the command terminal in the required folder and clone the repository using command
 ``` 
 git clone https://github.com/Ankita-Khiratkar/2021Fall_finals.git
@@ -58,15 +70,25 @@ https://github.com/Ankita-Khiratkar/2021Fall_finals/archive/refs/heads/main.zip
 ```
 2. Open and run file Final_Project.ipynb in Jupyter Notebook
 
-## Analysis
 
+## Folder Structure
+
+├── <strong>Data:</strong> Data files<br/>
+├── <strong>Images:</strong> Images of plots for README file<br/>
+├── <strong>scraper.py:</strong> Script to web scrape data<br/>
+├── <strong>main.py:</strong> Functions to perform the desired analysis<br/>
+├── <strong>Final_Project.ipynb:</strong> Analysis and Hypotheses testing<br/>
+└── <strong>README.md</strong>
+
+
+## Analysis
 
 ### Hypothesis 1: Unemployment Rate - Age
 >Null Hypothesis: Unemployment rate in the United States is independent of Age
 >
 >Alternative Hypothesis: Unemployment rate in the United States is NOT independent of Age
 
-<img alt="Unemployment Rate in the United States - Age" src="./images/Unemployment Rate in the United States - Age.png" title="Unemployment Rate in the United States - Age"/>
+<img alt="Unemployment Rate in the United States - Age" src="./Images/Unemployment Rate in the United States - Age.png" title="Unemployment Rate in the United States - Age"/>
 
 <strong>Observation:</strong><br>
 - From the above plot, we observe that the unemployment rate is inversely proportional to the age group. Higher the age group, lower is the unemployment rate.
@@ -77,7 +99,7 @@ https://github.com/Ankita-Khiratkar/2021Fall_finals/archive/refs/heads/main.zip
  
 <strong>Analyzing Unemployment Rate in the United States with respect to Age during the Great Recession and the Covid-19 pandemic</strong><br>
 
-<img alt="Analyzing Unemployment Rate in the United States with respect to Age during the Great Recession and the Covid-19 pandemic" src="./images/CvsR_Unemployment Rate in the United States - Age.png" title="Analyzing Unemployment Rate in the United States with respect to Age during the Great Recession and the Covid-19 pandemic"/>
+<img alt="Analyzing Unemployment Rate in the United States with respect to Age during the Great Recession and the Covid-19 pandemic" src="./Images/CvsR_Unemployment Rate in the United States - Age.png" title="Analyzing Unemployment Rate in the United States with respect to Age during the Great Recession and the Covid-19 pandemic"/>
 <strong>Observation:</strong><br>
 
 - The unemployment rate increased for all age groups during the Great Recession period (December 2007 – June 2009).
@@ -94,7 +116,7 @@ https://github.com/Ankita-Khiratkar/2021Fall_finals/archive/refs/heads/main.zip
 >
 >Alternative Hypothesis: Unemployment rate in the United States is NOT independent of Race
 
-<img alt="Unemployment Rate in the United States - Race" src="./images/Unemployment Rate in the United States - Race.png" title="Unemployment Rate in the United States - Race"/>
+<img alt="Unemployment Rate in the United States - Race" src="./Images/Unemployment Rate in the United States - Race.png" title="Unemployment Rate in the United States - Race"/>
 
 <strong>Observation:</strong><br>
 - Ideally, the umployment rate should be independent of race but from the plot above we infer that the unemployment rate is always highest for Black/Africans Americans and lowest for Asian people. This trend is consistent throughout the timeline- the unemployment rate is highest for Black Americans followed by Hispanic or Latino then White and then Asians.
@@ -103,7 +125,7 @@ https://github.com/Ankita-Khiratkar/2021Fall_finals/archive/refs/heads/main.zip
 
 <strong>Analyzing Unemployment Rate in the United States with respect to Race during the Great Recession and the Covid-19 pandemic</strong><br>
 
-<img alt="Analyzing Unemployment Rate in the United States with respect to Race during the Great Recession and the Covid-19 pandemic" src="./images/CvsR_Unemployment Rate in the United States - Race.png" title="Analyzing Unemployment Rate in the United States with respect to Race during the Great Recession and the Covid-19 pandemic"/>
+<img alt="Analyzing Unemployment Rate in the United States with respect to Race during the Great Recession and the Covid-19 pandemic" src="./Images/CvsR_Unemployment Rate in the United States - Race.png" title="Analyzing Unemployment Rate in the United States with respect to Race during the Great Recession and the Covid-19 pandemic"/>
 <strong>Observation:</strong><br>
 
 - The umployment rate increased for all Races during the Great Recession (December 2007 – June 2009).
@@ -118,7 +140,7 @@ https://github.com/Ankita-Khiratkar/2021Fall_finals/archive/refs/heads/main.zip
 >
 >Alternative Hypothesis: Unemployment rate in the United States is NOT independent of Education Level
 
-<img alt="Unemployment Rate in the United States - Education Level" src="./images/Unemployment Rate in the United States - Education Level.png" title="Unemployment Rate in the United States - Education Level"/>
+<img alt="Unemployment Rate in the United States - Education Level" src="./Images/Unemployment Rate in the United States - Education Level.png" title="Unemployment Rate in the United States - Education Level"/>
 
 <strong>Observation:</strong><br>
 - From the plot above, we infer that the unemployment rate is inversely related to the education level. Unemployment rate is lower for people having the higher level of education.
@@ -129,7 +151,7 @@ https://github.com/Ankita-Khiratkar/2021Fall_finals/archive/refs/heads/main.zip
 
 <strong>Analyzing Unemployment Rate in the United States with respect to Education Level during the Great Recession and the Covid-19 pandemic</strong><br>
 
-<img alt="Analyzing Unemployment Rate in the United States with respect to Education Level during the Great Recession and the Covid-19 pandemic" src="./images/CvsR_Unemployment Rate in the United States - Education Level.png" title="Analyzing Unemployment Rate in the United States with respect to Education Level during the Great Recession and the Covid-19 pandemic"/>
+<img alt="Analyzing Unemployment Rate in the United States with respect to Education Level during the Great Recession and the Covid-19 pandemic" src="./Images/CvsR_Unemployment Rate in the United States - Education Level.png" title="Analyzing Unemployment Rate in the United States with respect to Education Level during the Great Recession and the Covid-19 pandemic"/>
 <strong>Observation:</strong><br>
 
 - The uemployment rate increased for all Education Levels during the Great Recession (December 2007 – June 2009).
@@ -146,14 +168,14 @@ https://github.com/Ankita-Khiratkar/2021Fall_finals/archive/refs/heads/main.zip
 >
 >Alternative Hypothesis: Duration for which people are unemployed is NOT independent of time
 
-<img alt="Unemployment in the United States - Duration" src="./images/Unemployment in the United States - Duration.png" title="Unemployment in the United States - Duration"/>
+<img alt="Unemployment in the United States - Duration" src="./Images/Unemployment in the United States - Duration.png" title="Unemployment in the United States - Duration"/>
 
 <strong>Observation:</strong><br>
 - From the plot above we can clearly see that duartion for which people are unemployed is dependent on time. Thus we can reject the null hypothesis.
 
 <strong>Analyzing the duration for which people are unemployed in the United States during the Great Recession and the Covid-19 pandemic</strong><br>
 
-<img alt="Analyzing the duration for which people are unemployed in the United States during the Great Recession and the Covid-19 pandemic" src="./images/CvsR_Unemployment in the United States - Duration.png" title="Analyzing the duration for which people are unemployed in the United States during the Great Recession and the Covid-19 pandemic"/>
+<img alt="Analyzing the duration for which people are unemployed in the United States during the Great Recession and the Covid-19 pandemic" src="./Images/CvsR_Unemployment in the United States - Duration.png" title="Analyzing the duration for which people are unemployed in the United States during the Great Recession and the Covid-19 pandemic"/>
 <strong>Observation:</strong><br>
 
 - We observe that, after the Great Recession, most of the people were unemployed for 15 weeks and over.
@@ -168,7 +190,7 @@ https://github.com/Ankita-Khiratkar/2021Fall_finals/archive/refs/heads/main.zip
 >
 >Alternative Hypothesis: Graduates in the United States prefer to be unemployed rather than being underemployed
 
-<img alt="Unemployement and Underemployment rate in the United States" src="./images/Unemployement and Underemployment rate in the United States.png" title="Unemployement and Underemployment rate in the United States"/>
+<img alt="Unemployement and Underemployment rate in the United States" src="./Images/Unemployement and Underemployment rate in the United States.png" title="Unemployement and Underemployment rate in the United States"/>
 
 <strong>Observation:</strong><br>
 - From the plot, the rate of unemployment and underemployment for recent graduates is always high as compared to others. 
@@ -183,8 +205,8 @@ https://github.com/Ankita-Khiratkar/2021Fall_finals/archive/refs/heads/main.zip
 
 Note: For this analysis we have taken data for the first quarter of 2019, 2020 and 2021 for all the states in the United States.
 
-<img alt="Percent change in job losses" src="./images/Percent change in job losses.png" title="Percent change in job losses"/>
-<img alt="Percent change in job gains" src="./images/Percent change in job gains.png" title="Percent change in job gains"/>
+<img alt="Percent change in job losses" src="./Images/Percent change in job losses.png" title="Percent change in job losses"/>
+<img alt="Percent change in job gains" src="./Images/Percent change in job gains.png" title="Percent change in job gains"/>
 
 <strong>Observation:</strong><br>
 - From the plots above, we can clearly infer that both the job losses and job gains are dependent on state. For example, percent change in job losses is very large for Washington and very small for Mississippi. Similiarly, the percent change for job gains is very large for Minnesota and very small for Tennessee.
@@ -199,7 +221,7 @@ Note: For this analysis we have taken data for the first quarter of 2019, 2020 a
 >
 >Alternative Hypothesis: There is relationship between Gross Domestic Product (GDP) and Unemployment Rate
 
-<img alt="GDP and Unemployment Rate in the United States" src="./images/GDP and Unemployment Rate in the United States.png" title="GDP and Unemployment Rate in the United States"/>
+<img alt="GDP and Unemployment Rate in the United States" src="./Images/GDP and Unemployment Rate in the United States.png" title="GDP and Unemployment Rate in the United States"/>
 
 <strong>Observation:</strong><br>
 
@@ -215,7 +237,7 @@ Note: For this analysis we have taken data for the first quarter of 2019, 2020 a
 >
 >Alternative Hypothesis: There is relationship between President's Political Party and the Unemployment Rate
 
-<img alt="President's Political Party and the Unemployment Rate" src="./images/President's Political Party and the Unemployment Rate.png" title="President's Political Party and the Unemployment Rate"/>
+<img alt="President's Political Party and the Unemployment Rate" src="./Images/President's Political Party and the Unemployment Rate.png" title="President's Political Party and the Unemployment Rate"/>
 In the above plot, Blue colour represents the Republican Party and Green colour represents the Democratic Party
 
 <strong>Observation:</strong><br>
@@ -232,10 +254,10 @@ In the above plot, Blue colour represents the Republican Party and Green colour 
 >
 >Alternative Hypothesis: There is relationship between the population and the Unemployment Rate
 
-<img alt="Unemployment rate and population regionwise" src="./images/Unemployment rate and population in the Midwest States.png" title="Unemployment rate and population regionwise"/>
-<img alt="Unemployment rate and population regionwise" src="./images/Unemployment rate and population in the Northeast States.png" title="Unemployment rate and population regionwise"/>
-<img alt="Unemployment rate and population regionwise" src="./images/Unemployment rate and population in the South States.png" title="Unemployment rate and population regionwise"/>
-<img alt="Unemployment rate and population regionwise" src="./images/Unemployment rate and population in the West States.png" title="Unemployment rate and population regionwise"/>
+<img alt="Unemployment rate and population regionwise" src="./Images/Unemployment rate and population in the Midwest States.png" title="Unemployment rate and population regionwise"/>
+<img alt="Unemployment rate and population regionwise" src="./Images/Unemployment rate and population in the Northeast States.png" title="Unemployment rate and population regionwise"/>
+<img alt="Unemployment rate and population regionwise" src="./Images/Unemployment rate and population in the South States.png" title="Unemployment rate and population regionwise"/>
+<img alt="Unemployment rate and population regionwise" src="./Images/Unemployment rate and population in the West States.png" title="Unemployment rate and population regionwise"/>
 
 <strong>Observation:</strong><br>
 
@@ -247,7 +269,7 @@ In the above plot, Blue colour represents the Republican Party and Green colour 
 
 <strong>Analyzing the Unemployment Rate in the States of United States - Regionwise from 2011 to 2020</strong><br>
 
-<img alt="Boxplot for Unemployment Rate in the States of United States - Regionwise" src="./images/Boxplot for Unemployment Rate in the States of United States - Regionwise.png" title="Boxplot for Unemployment Rate in the States of United States - Regionwise"/>
+<img alt="Boxplot for Unemployment Rate in the States of United States - Regionwise" src="./Images/Boxplot for Unemployment Rate in the States of United States - Regionwise.png" title="Boxplot for Unemployment Rate in the States of United States - Regionwise"/>
 <strong>Observation:</strong><br>
 
 - In each boxplot above, each data point is the unemployment rate for a state in a particular region for a particular year. For example, the data points for the orange boxplot in the South region would be the unemployment rates for the states in the south region for the year 2012.
@@ -256,8 +278,10 @@ In the above plot, Blue colour represents the Republican Party and Green colour 
 
 - Unemployment rate increased the maximum for states in the Northeast region and minimum for states in Midwest due to the Covid-19 pandemic.
 
+
 ## Data Sources
 * https://data.bls.gov/PDQWeb/ln
+* https://data.bls.gov/cgi-bin/surveymost?ln
 * https://www.bls.gov/opub/ted/2021/job-gains-and-losses-by-state-from-march-2019-to-march-2021.htm
 * https://data.worldbank.org/indicator/NY.GDP.MKTP.CD?end=2020&locations=US&start=1960&view=chart
 * https://databank.worldbank.org/source/world-development-indicators%23
@@ -267,4 +291,8 @@ In the above plot, Blue colour represents the Republican Party and Green colour 
 * https://www.newyorkfed.org/research/college-labor-market/index.html#/overview
 * https://www.bls.gov/charts/state-employment-and-unemployment/state-unemployment-rates-animated.htm
 
+
 ## Contribution
+* We discussed several ideas together and decided to move forward with the analysis on Unemployment Rate in the United States.
+* We both searched for data sets according to the hypotheses we came up with and finalized a few of the data sets, which fulfilled our requirements.
+* We contributed equally to the code. After writing the code, we discussed the more efficient methods to do each task and finalize the most optimal solution.
