@@ -23,7 +23,7 @@ Authors: Ankita Khiratkar (aak13), Divyaang Agarwal (dagarw5)
         <li><a href="#hypothesis-3">Hypothesis 3: Unemployment Rate - Education Level</a></li>
         <li><a href="#hypothesis-4">Hypothesis 4: Unemployment Rate - Duration</a></li>
         <li><a href="#hypothesis-5">Hypothesis 5: Unemployed vs Underemployed</a></li>
-        <li><a href="#hypothesis-6">Hypothesis 6: Percent Change in Job Losses and Job Gains</a></li>
+        <li><a href="#hypothesis-6">Hypothesis 6: Percent Change in Job Losses and Job Gains during the Covid-19 pandemic</a></li>
         <li><a href="#hypothesis-7">Hypothesis 7: Relation between GDP and Unemployment Rate</a></li>
         <li><a href="#hypothesis-8">Hypothesis 8: Relation between President's Political Party and Unemployment Rate</a></li>
         <li><a href="#hypothesis-9">Hypothesis 9: Relation between Population and the Unemployment Rate</a></li>
@@ -67,6 +67,20 @@ https://github.com/Ankita-Khiratkar/2021Fall_finals/archive/refs/heads/main.zip
 - Unemployment rate is highest for the age group 16 to 24 years followed by 25 to 34 years, then 35 to 44 years, then 45 to 54 years, followed by 55 to 64 years, and lastly 65 years and above.
 
 - Therefore, we conclude that unemployment rate is not independent of age and reject the null hypothesis.
+ 
+<strong>Analyzing Unemployment Rate in the United States with respect to Age during the Great Recession and the Covid-19 pandemic</strong><br>
+
+<img alt="Analyzing Unemployment Rate in the United States with respect to Age during the Great Recession and the Covid-19 pandemic" src="./images/CvsR_Unemployment Rate in the United States - Age.png" title="Analyzing Unemployment Rate in the United States with respect to Age during the Great Recession and the Covid-19 pandemic"/>
+<strong>Observation:</strong><br>
+
+- The unemployment rate increased for all age groups during the Great Recession period (December 2007 – June 2009).
+
+- Due to the Great Recesion, age group 25 to 34 years, 35 to 44 years, and 45 to 54 years seems to be more affected as compared to other age groups.
+
+- The unemployment rate for all age groups reached their all time high after the Covid-19 outbreak in early 2020.
+
+- The effect of the Great Recession was more dominant as compared to the effect of the Covid-19 pandemic on the unemployment rate. As we notice that for all age groups, the unemployment rate took a much longer time to come down after the Great Recession as compared to the Covid-19 pandemic.
+
 
 ### Hypothesis 2: Unemployment Rate - Race
 >Null Hypothesis: Unemployment rate in the United States is independent of Race
@@ -79,6 +93,18 @@ https://github.com/Ankita-Khiratkar/2021Fall_finals/archive/refs/heads/main.zip
 - Ideally, the umployment rate should be independent of race but from the plot above we infer that the unemployment rate is always highest for Black/Africans Americans and lowest for Asian people. This trend is consistent throughout the timeline- the unemployment rate is highest for Black Americans followed by Hispanic or Latino then White and then Asians.
 
 - Therefore, we can say that unemployemt rate is not independent of race and we reject the null hypothesis.
+
+<strong>Analyzing Unemployment Rate in the United States with respect to Race during the Great Recession and the Covid-19 pandemic</strong><br>
+
+<img alt="Analyzing Unemployment Rate in the United States with respect to Race during the Great Recession and the Covid-19 pandemic" src="./images/CvsR_Unemployment Rate in the United States - Race.png" title="Analyzing Unemployment Rate in the United States with respect to Race during the Great Recession and the Covid-19 pandemic"/>
+<strong>Observation:</strong><br>
+
+- The umployment rate increased for all Races during the Great Recession (December 2007 – June 2009).
+
+- The umployment rate for all Races reached their all time high after the Covid-19 outbreak in early 2020.
+
+- We observed that for all Races, the unemployment rate took a much longer time to come down after the Great Recession as compared to the Covid-19 pandemic.
+
 
 
 ### Hypothesis 3: Unemployment Rate - Education Level
@@ -95,6 +121,19 @@ https://github.com/Ankita-Khiratkar/2021Fall_finals/archive/refs/heads/main.zip
 
 - Thus, we conclude that unemployment rate is dependent on education level and we reject the null hypothesis.
 
+<strong>Analyzing Unemployment Rate in the United States with respect to Education Level during the Great Recession and the Covid-19 pandemic</strong><br>
+
+<img alt="Analyzing Unemployment Rate in the United States with respect to Education Level during the Great Recession and the Covid-19 pandemic" src="./images/CvsR_Unemployment Rate in the United States - Education Level.png" title="Analyzing Unemployment Rate in the United States with respect to Education Level during the Great Recession and the Covid-19 pandemic"/>
+<strong>Observation:</strong><br>
+
+- The uemployment rate increased for all Education Levels during the Great Recession (December 2007 – June 2009).
+
+- The unemployment rate for all Education Level groups reached their all time high after the Covid-19 outbreak in early 2020.
+
+- During both, the Great Recession and the Covid-19 pandemic, the rise in unemployment rate for people having less than a high school diploma was higher as compared to other categories.
+
+- The effect of the Covid-19 pandemic on the unemployment rate was more severe as compared to the Great Recession. But, the unemployment rate took a much longer time to come down after the Great Recession as compared to the Covid-19 pandemic.
+
 ### Hypothesis 4: Unemployment Rate - Duration
 >Null Hypothesis: Duration for which people are unemployed is independent of time
 >
@@ -105,9 +144,45 @@ https://github.com/Ankita-Khiratkar/2021Fall_finals/archive/refs/heads/main.zip
 <strong>Observation:</strong><br>
 - From the plot above we can clearly see that duartion for which people are unemployed is dependent on time. Thus we reject the null hypothesis.
 
-### Hypothesis 5: Unemployed vs Underemployed
+<strong>Analyzing the duration for which people are unemployed in the United States during the Great Recession and the Covid-19 pandemic</strong><br>
 
-### Hypothesis 6: Percent Change in Job Losses and Job Gains
+<img alt="Analyzing the duration for which people are unemployed in the United States during the Great Recession and the Covid-19 pandemic" src="./images/CvsR_Unemployment in the United States - Duration.png" title="Analyzing the duration for which people are unemployed in the United States during the Great Recession and the Covid-19 pandemic"/>
+<strong>Observation:</strong><br>
+
+- We observe that, after the Great Recession, most of the people were unemployed for 15 weeks and over.
+
+- During the Covid-19 pandemic, the number of people were mostly unemployed for 5 to 14 weeks was much higher than the number of people unemployed for 15 weeks and over.
+
+- The duration for which people were unemployed was less during the Covid-19 pandemic but the number of people affected was higher during the Covid-19 pandemic as compared to the Great Recession.
+
+### Hypothesis 5: Unemployed vs Underemployed
+>Null Hypothesis: Graduates in the United States prefer to be underemployed rather than staying unemployed
+>
+>Alternative Hypothesis: Graduates in the United States prefer to be unemployed rather than being underemployed
+
+<img alt="Unemployement and Underemployment rate in the United States" src="./images/Unemployement and Underemployment rate in the United States.png" title="Unemployement and Underemployment rate in the United States"/>
+
+<strong>Observation:</strong><br>
+- From the plot, the rate of unemployment and underemployment for recent graduates is always high as compared to others. 
+
+- If we compare the unemployment rate and underemployment rate for graduates, we can say that graduates in the United States prefer to be underemployed rather than stay unemployed. Hence, we can accept the null hypothesis.
+
+### Hypothesis 6: Percent Change in Job Losses and Job Gains during the Covid-19 pandemic
+>Null Hypothesis: Percent change in Job Losses and Job Gain is independent of state
+>
+>Alternative Hypothesis: Percent change in Job Losses and Job Gain is NOT independent of state
+
+Note: For this analysis we have taken data for the first quarter of 2019, 2020 and 2021 for all the states in the United States.
+
+<img alt="Percent change in job losses" src="./images/Percent change in job losses.png" title="Percent change in job losses"/>
+<img alt="Percent change in job gains" src="./images/Percent change in job gains.png" title="Percent change in job gains"/>
+
+<strong>Observation:</strong><br>
+- From the plots above, we can clearly infer that both the job losses and job gains are dependent on state. For example, percent change in job losses is very large for Washington and very small for Mississippi. Similiarly, the percent change for job gains is very large for Minnesota and very small for Tennessee.
+
+- Thus, we can conclude that Percent change in Job Losses and Job Gain is dependent on state and reject the null hypothesis.
+
+- Also, we notice that there was a decline in percent change for job gain (or increase in percent change for job losses) for the duration March 2019 - March 2020 for almost all the states in the United States due to the Covid-19 pandemic outbreak. In the period March 2020 - March 2021, we see that almost all the states showed increase in the number of jobs i.e. increase in the percent change for job gain (or decline in percent change for job losses).
 
 ### Hypothesis 7: Relation between GDP and Unemployment Rate
 
