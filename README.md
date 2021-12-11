@@ -253,17 +253,20 @@ In the above plot, Blue colour represents the Republican Party and Green colour 
 >Null Hypothesis: There is NO relationship between the population and the Unemployment Rate
 >
 >Alternative Hypothesis: There is relationship between the population and the Unemployment Rate
-
-<img alt="Unemployment rate and population regionwise" src="./Images/Unemployment rate and population in the Midwest States.png" title="Unemployment rate and population regionwise"/>
-<img alt="Unemployment rate and population regionwise" src="./Images/Unemployment rate and population in the Northeast States.png" title="Unemployment rate and population regionwise"/>
-<img alt="Unemployment rate and population regionwise" src="./Images/Unemployment rate and population in the South States.png" title="Unemployment rate and population regionwise"/>
-<img alt="Unemployment rate and population regionwise" src="./Images/Unemployment rate and population in the West States.png" title="Unemployment rate and population regionwise"/>
+<div>
+  <img style="float: left" alt="Unemployment rate and population regionwise" src="./Images/Unemployment rate and population in the Midwest States.png" title="Unemployment rate and population regionwise"/>
+  <img style="float: right" alt="Unemployment rate and population regionwise" src="./Images/Unemployment rate and population in the Northeast States.png" title="Unemployment rate and population regionwise"/>
+</div>
+<div>
+  <img style="float: left" alt="Unemployment rate and population regionwise" src="./Images/Unemployment rate and population in the South States.png" title="Unemployment rate and population regionwise"/>
+  <img style="float: right" alt="Unemployment rate and population regionwise" src="./Images/Unemployment rate and population in the West States.png" title="Unemployment rate and population regionwise"/>
+</div>
 
 <strong>Observation:</strong><br>
 
-- The barplot above represents the mean of the unemployment rates of all states in a region and sum of the population (x10^7) for all the states in that region. 
+- The barplots above represents the mean of the unemployment rates of all states in a region and sum of the population (x10^7) for all the states in that region. 
 
-- From the barplot above we notice that in Midwest and Northeast region there is not much significant change in population over the years (2011-2020) while for South and West region there is a notable increase in population in these years. But we notice that for all the regions the unemployment rate decreases from 2011 to 2019. Thus, we conclude that there is no significant relation between the population and the unemployment rate and thus, we accept the null hypothesis.
+- From the barplots above we notice that in Midwest and Northeast region there is not much significant change in population over the years (2011-2020) while for South and West region there is a notable increase in population in these years. But we notice that for all the regions the unemployment rate decreases from 2011 to 2019. Thus, we conclude that there is no significant relation between the population and the unemployment rate and thus, we accept the null hypothesis.
 
 - In 2020, due to the Covid-19 pandemic there is a rise in the unemployment rate for all the regions in the United States.
 
