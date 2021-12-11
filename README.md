@@ -171,7 +171,7 @@ https://github.com/Ankita-Khiratkar/2021Fall_finals/archive/refs/heads/main.zip
 <img alt="Unemployment in the United States - Duration" src="./Images/Unemployment in the United States - Duration.png" title="Unemployment in the United States - Duration"/>
 
 <strong>Observation:</strong><br>
-- From the plot above we can clearly see that duartion for which people are unemployed is dependent on time. Thus we can reject the null hypothesis.
+- From the plot above we can clearly see that duartion for which people are unemployed is not dependent on time. Thus, we accept the null hypothesis.
 
 <strong>Analyzing the duration for which people are unemployed in the United States during the Great Recession and the Covid-19 pandemic</strong><br>
 
