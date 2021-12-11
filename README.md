@@ -23,7 +23,7 @@ Authors: Ankita Khiratkar (aak13), Divyaang Agarwal (dagarw5)
         <li><a href="#hypothesis-3">Hypothesis 3: Unemployment Rate - Education Level</a></li>
         <li><a href="#hypothesis-4">Hypothesis 4: Unemployment Rate - Duration</a></li>
         <li><a href="#hypothesis-5">Hypothesis 5: Unemployed vs Underemployed</a></li>
-        <li><a href="#hypothesis-6">Hypothesis 6: Percent Change in Job Losses and Job Gains</a></li>
+        <li><a href="#hypothesis-6">Hypothesis 6: Percent Change in Job Losses and Job Gains during the Covid-19 pandemic</a></li>
         <li><a href="#hypothesis-7">Hypothesis 7: Relation between GDP and Unemployment Rate</a></li>
         <li><a href="#hypothesis-8">Hypothesis 8: Relation between President's Political Party and Unemployment Rate</a></li>
         <li><a href="#hypothesis-9">Hypothesis 9: Relation between Population and the Unemployment Rate</a></li>
@@ -156,8 +156,33 @@ https://github.com/Ankita-Khiratkar/2021Fall_finals/archive/refs/heads/main.zip
 - The duration for which people were unemployed was less during the Covid-19 pandemic but the number of people affected was higher during the Covid-19 pandemic as compared to the Great Recession.
 
 ### Hypothesis 5: Unemployed vs Underemployed
+>Null Hypothesis: Graduates in the United States prefer to be underemployed rather than staying unemployed
+>
+>Alternative Hypothesis: Graduates in the United States prefer to be unemployed rather than being underemployed
 
-### Hypothesis 6: Percent Change in Job Losses and Job Gains
+<img alt="Unemployement and Underemployment rate in the United States" src="./images/Unemployement and Underemployment rate in the United States.png" title="Unemployement and Underemployment rate in the United States"/>
+
+<strong>Observation:</strong><br>
+- From the plot, the rate of unemployment and underemployment for recent graduates is always high as compared to others. 
+
+- If we compare the unemployment rate and underemployment rate for graduates, we can say that graduates in the United States prefer to be underemployed rather than stay unemployed. Hence, we can accept the null hypothesis.
+
+### Hypothesis 6: Percent Change in Job Losses and Job Gains during the Covid-19 pandemic
+>Null Hypothesis: Percent change in Job Losses and Job Gain is independent of state
+>
+>Alternative Hypothesis: Percent change in Job Losses and Job Gain is NOT independent of state
+
+Note: For this analysis we have taken data for the first quarter of 2019, 2020 and 2021 for all the states in the United States.
+
+<img alt="Percent change in job losses" src="./images/Percent change in job losses.png" title="Percent change in job losses"/>
+<img alt="Percent change in job gains" src="./images/Percent change in job gains.png" title="Percent change in job gains"/>
+
+<strong>Observation:</strong><br>
+- From the plots above, we can clearly infer that both the job losses and job gains are dependent on state. For example, percent change in job losses is very large for Washington and very small for Mississippi. Similiarly, the percent change for job gains is very large for Minnesota and very small for Tennessee.
+
+- Thus, we can conclude that Percent change in Job Losses and Job Gain is dependent on state and reject the null hypothesis.
+
+- Also, we notice that there was a decline in percent change for job gain (or increase in percent change for job losses) for the duration March 2019 - March 2020 for almost all the states in the United States due to the Covid-19 pandemic outbreak. In the period March 2020 - March 2021, we see that almost all the states showed increase in the number of jobs i.e. increase in the percent change for job gain (or decline in percent change for job losses).
 
 ### Hypothesis 7: Relation between GDP and Unemployment Rate
 
