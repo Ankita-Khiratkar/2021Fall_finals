@@ -2,6 +2,7 @@
 
 Authors: Ankita Khiratkar (aak13), Divyaang Agarwal (dagarw5)
 
+<hr />
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -33,7 +34,13 @@ Authors: Ankita Khiratkar (aak13), Divyaang Agarwal (dagarw5)
   </ol>
 </details>
 
+<hr />
+
 ## Description
+In the recent times, we have all read news and even experienced the increase in unemployment around the world due to the ongoing Covid-19 pandemic. Our project is based on the analysis of Unemployment Rate over the years in United States. 
+
+Let us familiarize you with what Unemployment Rate means. Unemployment Rate is the fraction of labor force looking for a job. Where labor force is the sum of people who are employed or are looking for a job or work. 
+
 
 ## Getting Started
 
@@ -106,7 +113,6 @@ https://github.com/Ankita-Khiratkar/2021Fall_finals/archive/refs/heads/main.zip
 - We observed that for all Races, the unemployment rate took a much longer time to come down after the Great Recession as compared to the Covid-19 pandemic.
 
 
-
 ### Hypothesis 3: Unemployment Rate - Education Level
 >Null Hypothesis: Unemployment rate in the United States is independent of Education Level
 >
@@ -134,6 +140,7 @@ https://github.com/Ankita-Khiratkar/2021Fall_finals/archive/refs/heads/main.zip
 
 - The effect of the Covid-19 pandemic on the unemployment rate was more severe as compared to the Great Recession. But, the unemployment rate took a much longer time to come down after the Great Recession as compared to the Covid-19 pandemic.
 
+
 ### Hypothesis 4: Unemployment Rate - Duration
 >Null Hypothesis: Duration for which people are unemployed is independent of time
 >
@@ -142,7 +149,7 @@ https://github.com/Ankita-Khiratkar/2021Fall_finals/archive/refs/heads/main.zip
 <img alt="Unemployment in the United States - Duration" src="./images/Unemployment in the United States - Duration.png" title="Unemployment in the United States - Duration"/>
 
 <strong>Observation:</strong><br>
-- From the plot above we can clearly see that duartion for which people are unemployed is dependent on time. Thus we reject the null hypothesis.
+- From the plot above we can clearly see that duartion for which people are unemployed is dependent on time. Thus we can reject the null hypothesis.
 
 <strong>Analyzing the duration for which people are unemployed in the United States during the Great Recession and the Covid-19 pandemic</strong><br>
 
@@ -155,6 +162,7 @@ https://github.com/Ankita-Khiratkar/2021Fall_finals/archive/refs/heads/main.zip
 
 - The duration for which people were unemployed was less during the Covid-19 pandemic but the number of people affected was higher during the Covid-19 pandemic as compared to the Great Recession.
 
+
 ### Hypothesis 5: Unemployed vs Underemployed
 >Null Hypothesis: Graduates in the United States prefer to be underemployed rather than staying unemployed
 >
@@ -166,6 +174,7 @@ https://github.com/Ankita-Khiratkar/2021Fall_finals/archive/refs/heads/main.zip
 - From the plot, the rate of unemployment and underemployment for recent graduates is always high as compared to others. 
 
 - If we compare the unemployment rate and underemployment rate for graduates, we can say that graduates in the United States prefer to be underemployed rather than stay unemployed. Hence, we can accept the null hypothesis.
+
 
 ### Hypothesis 6: Percent Change in Job Losses and Job Gains during the Covid-19 pandemic
 >Null Hypothesis: Percent change in Job Losses and Job Gain is independent of state
@@ -184,6 +193,7 @@ Note: For this analysis we have taken data for the first quarter of 2019, 2020 a
 
 - Also, we notice that there was a decline in percent change for job gain (or increase in percent change for job losses) for the duration March 2019 - March 2020 for almost all the states in the United States due to the Covid-19 pandemic outbreak. In the period March 2020 - March 2021, we see that almost all the states showed increase in the number of jobs i.e. increase in the percent change for job gain (or decline in percent change for job losses).
 
+
 ### Hypothesis 7: Relation between GDP and Unemployment Rate
 >Null Hypothesis: There is NO relationship between Gross Domestic Product (GDP) and Unemployment Rate
 >
@@ -198,6 +208,7 @@ Note: For this analysis we have taken data for the first quarter of 2019, 2020 a
 - Around 2003 and during the Great Recession in 2008, there was a slight decrease in the GDP of United States and during both the times we notice that the unemployment rate increases.
 
 - Thus, we conclude that there is a relationship between the Gross Domestic Product (GDP) and the Unemployment Rate, and we reject the null hypothesis.
+
 
 ### Hypothesis 8: Relation between President's Political Party and Unemployment Rate
 >Null Hypothesis: There is NO relationship between President's Political Party and the Unemployment Rate
@@ -214,6 +225,7 @@ In the above plot, Blue colour represents the Republican Party and Green colour 
 - While in the rule of Republican party, we observe that the unemployment rate trend is random.
 
 - Thus, we can say that there is no relationship between the President's Political Party and the Unemployment Rate in the United States and we accept the null hypothesis.
+
 
 ### Hypothesis 9: Relation between Population and the Unemployment Rate
 >Null Hypothesis: There is NO relationship between the population and the Unemployment Rate
