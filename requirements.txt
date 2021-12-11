@@ -1,4 +1,0 @@
-# Packages required
-pandas
-numpy
-os
