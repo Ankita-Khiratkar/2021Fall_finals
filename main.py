@@ -17,19 +17,19 @@ def import_bls_excel(directory: str, file_name: str) -> pd.DataFrame:
     :return: dataframe of the requested excel sheet with index as Year and Month
 
     >>> import_bls_excel('./Data/BLS/Age/', '16-24 yrs.xlsx')   # doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-                  16-24 yrs
-    Year   Month
-    1948.0 Jan        872.0
-           Feb       1049.0
-           Mar       1065.0
-           Apr        857.0
-           May        739.0
-    ...                 ...
-    2021.0 Aug       2042.0
-           Sep       1772.0
-           Oct       1652.0
-           Nov       1584.0
-           Dec          NaN
+                16-24 yrs
+    Year Month
+    1948 Jan        872.0
+    1949 Jan        977.0
+    1950 Jan       1508.0
+    1951 Jan        690.0
+    1952 Jan        670.0
+    ...               ...
+    2017 Dec       1640.0
+    2018 Dec       1626.0
+    2019 Dec       1516.0
+    2020 Dec       2336.0
+    2021 Dec          NaN
     <BLANKLINE>
     [888 rows x 1 columns]
 
@@ -370,12 +370,18 @@ def invert_state_df(df_state_pop: pd.DataFrame) -> pd.DataFrame:
 
     >>> df_state_region = get_state_region_pop_df('./Data/State Population/statewise population.csv', './Data/State Population/state_region_division.csv')
     >>> invert_state_df(df_state_region)    # doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-               State Region  Division  Year  Population
-    0     Alaska   West   Pacific  2010      713982
-    1     Alaska   West   Pacific  2011      722349
-    ...
-    559  Wyoming   West  Mountain  2019      580116
-    560  Wyoming   West  Mountain  2020      582328
+                 State     Region            Division  Year  Population
+    0           Alaska       West             Pacific  2010      713982
+    1          Alabama      South  East South Central  2010     4785514
+    2         Arkansas      South  West South Central  2010     2921998
+    3          Arizona       West            Mountain  2010     6407342
+    4       California       West             Pacific  2010    37319550
+    ..             ...        ...                 ...   ...         ...
+    556        Vermont  Northeast         New England  2020      623347
+    557     Washington       West             Pacific  2020     7693612
+    558      Wisconsin    Midwest  East North Central  2020     5832655
+    559  West Virginia      South      South Atlantic  2020     1784787
+    560        Wyoming       West            Mountain  2020      582328
     <BLANKLINE>
     [561 rows x 5 columns]
     """
@@ -421,19 +427,21 @@ def get_state_unemp_df(path: str) -> pd.DataFrame:  # Can be made faster using N
     :return: dataframe containing statewise unemployment data
 
     >>> get_state_unemp_df(path='./Data/Unemployment Rates for States/state_unemployment_11_21.csv')    # doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
-                    State       Date  Rate  Year
-    0         Alabama 2011-10-01   9.2  2011
-    1         Alabama 2011-11-01   8.9  2011
-    ...
-    6290  Puerto Rico 2021-09-01   8.3  2021
-    6291  Puerto Rico 2021-10-01   8.0  2021
+                  State       Date  Rate  Year
+    0           Alabama 2011-10-01   9.2  2011
+    1            Alaska 2011-10-01   7.7  2011
+    2           Arizona 2011-10-01   9.1  2011
+    3          Arkansas 2011-10-01   7.8  2011
+    4        California 2011-10-01  11.6  2011
+    ...             ...        ...   ...   ...
+    6287     Washington 2021-10-01   5.0  2021
+    6288  West Virginia 2021-10-01   4.3  2021
+    6289      Wisconsin 2021-10-01   3.2  2021
+    6290        Wyoming 2021-10-01   4.1  2021
+    6291    Puerto Rico 2021-10-01   8.0  2021
     <BLANKLINE>
     [6290 rows x 4 columns]
 
-    >>> get_state_unemp_df(path='./Data/Unemployment Rates for States/state_unemployment_11.csv')    # doctest: +ELLIPSIS
-    Traceback (most recent call last):
-    ...
-    FileNotFoundError: [Errno 2] No such file or directory: './Data/Unemployment Rates for States/state_unemployment_11.csv'
     """
 
     # Loading the dataset from the specified directory path
